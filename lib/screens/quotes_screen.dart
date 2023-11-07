@@ -13,8 +13,8 @@ class QuotesScreen extends StatefulWidget {
 }
 
 class _QuotesScreenState extends State<QuotesScreen> {
-  late String author;
-  late String quote;
+  var author = 'author';
+  var quote = 'quote';
 
   // void fetchData() async {
   //   try {
@@ -58,63 +58,45 @@ class _QuotesScreenState extends State<QuotesScreen> {
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
           ),
         ),
-        body: FutureBuilder(
-          future: networking.fetchData(),
-          builder: (_, snapshot) {
-            if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
-              );
-            }
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: Text('Loading...'),
-              );
-            }
-            final quoteMap = snapshot.data!;
-            author = quoteMap['author'];
-            quote = quoteMap['quote'];
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Author : $author',
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 70),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Text(
-                      quote,
-                      style: const TextStyle(fontSize: 28),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(height: 100),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        elevation: 2,
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white),
-                    onPressed: () {
-                      setState(() {
-                        author = quoteMap['author'];
-                        quote = quoteMap['quote'];
-                      });
-                    },
-                    child: const Text(
-                      'Generate a quote !',
-                      style: TextStyle(fontSize: 17),
-                    ),
-                  )
-                ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Author : $author',
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-            );
-          },
+              const SizedBox(height: 70),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  quote,
+                  style: const TextStyle(fontSize: 28),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 100),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    elevation: 2,
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white),
+                onPressed: () {
+                  // setState(() {
+                  //   author = quoteMap['author'];
+                  //   quote = quoteMap['quote'];
+                  // });
+                  print('object');
+                },
+                child: const Text(
+                  'Generate a quote !',
+                  style: TextStyle(fontSize: 17),
+                ),
+              )
+            ],
+          ),
         ));
   }
-}
- 
+} 
 // i want to have data as soon as my app loads for the first time, so 

@@ -5,11 +5,13 @@ class Networking {
   Networking();
   var author = 'nobody';
   var data = 'no quotes yet';
+  var category = '';
 
   Future<Map<String, dynamic>> fetchData() async {
-    final url = Uri.parse('https://api.api-ninjas.com/v1/quotes');
+    final url =
+        Uri.parse('https://api.api-ninjas.com/v1/randomimage?category=$category');
     var response = await http.get(url,
-        headers: {'X-Api-Key': 'l9yOupI+dbRSIpD2TxpJag==x2NKY2x2tWhU3txY'});
+        headers: {'X-Api-Key': 'l9yOupI+dbRSIpD2TxpJag==x2NKY2x2tWhU3txY', 'Accept': 'image/jpg'});
 
     if (response.statusCode >= 400) {
       print(response.statusCode);
