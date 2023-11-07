@@ -16,29 +16,19 @@ class _QuotesScreenState extends State<QuotesScreen> {
   var author = 'author';
   var quote = 'quote';
 
-  // void fetchData() async {
-  //   try {
-  //     final url = Uri.parse('https://api.api-ninjas.com/v1/quotes');
-  //     var response = await http.get(
-  //       url,
-  //       headers: {'X-Api-Key': 'l9yOupI+dbRSIpD2TxpJag==x2NKY2x2tWhU3txY'},
-  //     );
+  void fetchData() async {
+    final url =
+        Uri.parse('https://api.api-ninjas.com/v1/randomimage?category=nature');
+    var response = await http.get(url, headers: {
+      'X-Api-Key': 'l9yOupI+dbRSIpD2TxpJag==x2NKY2x2tWhU3txY',
+      'Accept': 'image/jpg'
+    });
 
-  //     if (response.statusCode >= 400) {
-  //       print(response.statusCode);
-  //     }
-  //     final decodedData = jsonDecode(response.body);
-  //     print(decodedData);
-
-  //     setState(() {
-  //       data = decodedData[0]['quote'];
-  //       author = decodedData[0]['author'];
-  //     });
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
-
+    if (response.statusCode >= 400) {
+      print(response.statusCode);
+    }
+    
+  }
   // @override
   // void initState() {
   //   super.initState();
@@ -87,7 +77,8 @@ class _QuotesScreenState extends State<QuotesScreen> {
                   //   author = quoteMap['author'];
                   //   quote = quoteMap['quote'];
                   // });
-                  print('object');
+                  // print('object');
+                  fetchData();
                 },
                 child: const Text(
                   'Generate a quote !',
