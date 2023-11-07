@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:joker/services/networking.dart';
 
 class QuotesScreen extends StatefulWidget {
   const QuotesScreen({super.key});
@@ -27,7 +24,6 @@ class _QuotesScreenState extends State<QuotesScreen> {
     if (response.statusCode >= 400) {
       print(response.statusCode);
     }
-    
   }
   // @override
   // void initState() {

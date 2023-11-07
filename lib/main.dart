@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:joker/screens/quotes_screen.dart';
 
@@ -9,8 +7,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application. and everything beyo9jdn
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,3 +22,5 @@ class MyApp extends StatelessWidget {
 }
 
 //* Random Image Generator
+
+//* Time for some refactoring
